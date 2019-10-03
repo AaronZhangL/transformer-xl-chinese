@@ -17,9 +17,9 @@ from absl import flags
 import tensorflow as tf
 from vocabulary import Vocab
 
-from tensorflow.gfile import Exists as exists
-from tensorflow.gfile import MakeDirs as makedirs
-from tensorflow.gfile import Glob as glob
+from tensorflow.io.gfile import exists as exists
+from tensorflow.io.gfile import makedirs as makedirs
+from tensorflow.io.gfile import glob as glob
 
 
 def _preprocess(shard, train, vocab, save_dir, cutoffs, bin_sizes, bsz, tgt_len,
@@ -431,7 +431,7 @@ def get_input_fn(record_info_dir, split, per_host_bsz, tgt_len,
     bin_sizes = record_info["bin_sizes"]
     num_batch = record_info["num_batch"]
 
-    tf.logging.info("[{}] File names {}".format(split, file_names))
+    tf.compat.v1.logging.info("[{}] File names {}".format(split, file_names))
 
     def input_fn(params):
         # per-core batch size
@@ -468,8 +468,8 @@ def get_input_fn(record_info_dir, split, per_host_bsz, tgt_len,
                 }
             else:
                 record_spec = {
-                    "inputs": tf.VarLenFeature(tf.int64),
-                    "labels": tf.VarLenFeature(tf.int64),
+                    "inputs": tf.io.VarLenFeature(tf.int64),
+                    "labels": tf.io.VarLenFeature(tf.int64),
                 }
 
             # permutation related features
@@ -482,12 +482,12 @@ def get_input_fn(record_info_dir, split, per_host_bsz, tgt_len,
 
                 for b in range(len(bin_sizes)):
                     record_spec["inp_cnt_{}".format(b)] = tf.FixedLenFeature([1], tf.int64)
-                    record_spec["inp_tup_{}".format(b)] = tf.VarLenFeature(tf.int64)
+                    record_spec["inp_tup_{}".format(b)] = tf.io.VarLenFeature(tf.int64)
                     record_spec["tgt_cnt_{}".format(b)] = tf.FixedLenFeature([1], tf.int64)
-                    record_spec["tgt_tup_{}".format(b)] = tf.VarLenFeature(tf.int64)
+                    record_spec["tgt_tup_{}".format(b)] = tf.io.VarLenFeature(tf.int64)
 
             # retrieve serialized example
-            example = tf.parse_single_example(
+            example = tf.io.parse_single_example(
                 serialized=record,
                 features=record_spec)
 
@@ -503,7 +503,8 @@ def get_input_fn(record_info_dir, split, per_host_bsz, tgt_len,
                 if tf.keras.backend.is_sparse(val):
                     val = tf.sparse.to_dense(val)
                 if val.dtype == tf.int64:
-                    val = tf.to_int32(val)
+                    #val = tf.to_int32(val)
+                    val = tf.cast(val,tf.int32)
                 example[key] = val
 
             if use_tpu:
@@ -589,4 +590,4 @@ if __name__ == "__main__":
     flags.DEFINE_bool("use_tpu", True,
                       help="use tpu")
 
-    tf.app.run(main)
+    tf.compat.v1.app.run(main)

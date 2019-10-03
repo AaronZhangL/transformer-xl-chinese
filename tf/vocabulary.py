@@ -8,8 +8,8 @@ import numpy as np
 
 import tensorflow as tf
 
-from tensorflow.gfile import Open as open
-from tensorflow.gfile import Exists as exists
+from tensorflow.io.gfile import GFile as open
+from tensorflow.io.gfile import exists as exists
 
 
 class Vocab(object):

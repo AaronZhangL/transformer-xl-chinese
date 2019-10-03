@@ -4,7 +4,7 @@ import tensorflow as tf
 
 def assign_to_gpu(gpu=0, ps_dev="/device:CPU:0"):
     def _assign(op):
-        node_def = op if isinstance(op, tf.NodeDef) else op.node_def
+        node_def = op if isinstance(op, tf.compat.v1.NodeDef) else op.node_def
         if node_def.op == "Variable":
             return ps_dev
         else:
