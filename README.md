@@ -1,3 +1,6 @@
+# forked from GaoPeng97/transformer-xl-chinese
+### Oct 3, 2019
+
 ### 生成结果示例
 
 + 斗破苍穹续写：
