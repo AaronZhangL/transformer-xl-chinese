@@ -654,7 +654,7 @@ def transformer_inference(dec_inp, mems, mems_id, n_token, n_layer, d_model, d_e
                     kernel_initializer=initializer,
                     is_training=is_training)
 
-        output =tf.keras.layers.Dropout(output, dropout, training=is_training)
+        output =tf.compat.v1.layers.dropout(output, dropout, training=is_training)
         idx_output = compute_output(output, n_token, cutoffs, shared_params)
 
         loss = 0
