@@ -19,9 +19,12 @@ $ pyenv versions
 1.14.0
 ```
 ----------------------
+### Export packages
 ```
 $ pip freeze > requirements.txt
-
+```
+### Install packages
+```
 $ pip install -r requirements.txt
 ```
 ----------------------
