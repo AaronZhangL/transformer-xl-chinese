@@ -19,6 +19,11 @@ $ pyenv versions
 1.14.0
 ```
 ----------------------
+```
+$ pip install progressbar
+$ pip install matplotlib
+```
+----------------------
 ### Export packages
 ```
 $ pip freeze > requirements.txt
