@@ -10,7 +10,11 @@ Oct 4, 2019
 $ pyenv --version                                                                                                               pyenv 1.2.13
 $ python --version
   Python 3.7.4
-
+$ pyenv versions
+  system
+* anac3-5.3.1 (set by /Users/xxx/transformer-xl-chinese/.python-version)
+  anaconda3-5.3.1
+  anaconda3-5.3.1/envs/anac3-5.3.1
 # tensorflow version:
 1.14.0
 ```
