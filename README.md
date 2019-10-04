@@ -20,5 +20,12 @@ $ pip freeze > requirements.txt
 
 $ pip install -r requirements.txt
 ```
-
+----------------------
+### How to run
+```
+$ export TF_XLA_FLAGS=--tf_xla_cpu_global_jit
+$ bash scripts/doupo_base_gpu.sh train_data
+$ bash scripts/doupo_base_gpu.sh train
+$ bash scripts/doupo_base_gpu.sh inference
+```
 
