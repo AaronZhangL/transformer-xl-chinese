@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+
 #!/bin/bash
 
 # Data
-DATA_ROOT=../data/doupo
+DATA_ROOT=../data/doupo/
 
 # Model
 DIV_VAL=1
