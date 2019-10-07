@@ -59,12 +59,16 @@ Type "help", "copyright", "credits" or "license" for more information.
 True
 >>>
 >>> tf.test.is_gpu_available(cuda_only=False, min_cuda_compute_capability=None)
-2019-10-08 00:40:51.471873: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
-2019-10-08 00:40:51.481176: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library nvcuda.dll
-2019-10-08 00:40:51.821642: E tensorflow/stream_executor/cuda/cuda_driver.cc:318] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
-2019-10-08 00:40:51.834933: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: ALIENWARE-ZHANG
-2019-10-08 00:40:51.841162: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: ALIENWARE-ZHANG
-False
+2019-10-08 01:00:15.968986: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2019-10-08 01:00:15.977193: I tensorflow/stream_executor/platform/default/dso_loader.cc:42] Successfully opened dynamic library nvcuda.dll
+2019-10-08 01:00:16.306120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1640] Found device 0 with properties:
+name: GeForce GTX 770M major: 3 minor: 0 memoryClockRate(GHz): 0.797
+pciBusID: 0000:01:00.0
+2019-10-08 01:00:16.313599: I tensorflow/stream_executor/platform/default/dlopen_checker_stub.cc:25] GPU libraries are statically linked, skip dlopen check.
+2019-10-08 01:00:16.323019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1717] Ignoring visible gpu device (device: 0, name: GeForce GTX 770M, pci bus id: 0000:01:00.0, compute capability: 3.0) with Cuda compute capability 3.0. The minimum required Cuda capability is 3.5.
+2019-10-08 01:00:16.387441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1181] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-10-08 01:00:16.392837: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1187]      0
+2019-10-08 01:00:16.397074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1200] 0:   N
 ```
 
 
