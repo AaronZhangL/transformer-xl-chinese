@@ -35,5 +35,9 @@ set TEST_NUM_CORE=1
 
 
 if  %1==train_data ( python data_utils_chinese.py   --data_dir=%DATA_ROOT%/  --dataset=doupo  --tgt_len=%TGT_LEN%  --per_host_train_bsz=%BSZ%  --per_host_valid_bsz=%BSZ%	--num_passes=1  --use_tpu=false )
-else  ( echo "=======false===========" )
+if  %1==train (
+    echo 'Run training...'
+    set CUDA_VISIBLE_DEVICES='0' 
+	python train_gpu.py    --data_dir=%DATA_ROOT%/tfrecords   --record_info_dir=%DATA_ROOT%/tfrecords/   --corpus_info_path=%DATA_ROOT%/corpus-info.json   --model_dir=EXP-doupo4-1_head-1e4   --div_val=%DIV_VAL%   --untie_r=True    --proj_share_all_but_first=True    --n_layer=%N_LAYER%    --d_model=%D_MODEL%    --d_embed=%D_EMBED%   --n_head=%N_HEAD%   --d_head=%D_HEAD%   --d_inner=%D_INNER%   --dropout=0.1   --dropatt=0.0   --learning_rate=0.00010   --warmup_steps=0   --train_steps=1000000   --tgt_len=%TGT_LEN%   --mem_len=%MEM_LEN%    --train_batch_size=%BSZ%   --num_core_per_host=%NUM_CORE%  --iterations=200  --save_steps=4000  )
+
 

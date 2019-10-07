@@ -58,7 +58,7 @@ elif [[ $1 == 'test_data' ]]; then
         ${@:2}
 elif [[ $1 == 'train' ]]; then
     echo 'Run training...'
-    CUDA_VISIBLE_DEVICES='0' python train_gpu.py \
+    CUDA_VISIBLE_DEVICES='0' python train_gpu.py  \
         --data_dir=${DATA_ROOT}/tfrecords \
         --record_info_dir=${DATA_ROOT}/tfrecords/ \
         --corpus_info_path=${DATA_ROOT}/corpus-info.json \
@@ -76,13 +76,13 @@ elif [[ $1 == 'train' ]]; then
         --dropatt=0.0 \
         --learning_rate=0.00010 \
         --warmup_steps=0 \
-        --train_steps=1000 \
+        --train_steps=1000000 \
         --tgt_len=${TGT_LEN} \
         --mem_len=${MEM_LEN} \
         --train_batch_size=${BSZ} \
         --num_core_per_host=${NUM_CORE} \
-        --iterations=20 \
-        --save_steps=100 \
+        --iterations=200 \
+        --save_steps=4000 \
         ${@:2}
 elif [[ $1 == 'eval' ]]; then
     echo 'Run evaluation...'
@@ -118,7 +118,7 @@ elif [[ $1 == 'inference' ]]; then
         --data_dir=${DATA_ROOT}/tfrecords \
         --record_info_dir=${DATA_ROOT}/tfrecords/ \
         --corpus_info_path=${DATA_ROOT}/corpus-info.json \
-        --model_dir=EXP-doupo4-1_head-1e4 \
+        --model_dir=EXP-doupo4/lr1e4_new \
         --div_val=${DIV_VAL} \
         --untie_r=True \
         --proj_share_all_but_first=True \

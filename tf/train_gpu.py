@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '8,9'
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 
 import math
 from vocabulary import Vocab
