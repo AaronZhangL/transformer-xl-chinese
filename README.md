@@ -40,4 +40,8 @@ $ bash scripts/doupo_base_gpu.sh train_data
 $ bash scripts/doupo_base_gpu.sh train
 $ bash scripts/doupo_base_gpu.sh inference
 ```
-
+#### for windows
+```
+set AUTOGRAPH_VERBOSITY=10
+set TF_XLA_FLAGS=--tf_xla_cpu_global_jit
+```
