@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+#!/usr/bin/env bash
+
 #!/bin/bash
 
 # Data
-DATA_ROOT=../data/doupo
+DATA_ROOT=../data/doupo/
 
 # Model
 DIV_VAL=1
@@ -76,13 +78,13 @@ elif [[ $1 == 'train' ]]; then
         --dropatt=0.0 \
         --learning_rate=0.00010 \
         --warmup_steps=0 \
-        --train_steps=1000 \
+        --train_steps=1000000 \
         --tgt_len=${TGT_LEN} \
         --mem_len=${MEM_LEN} \
         --train_batch_size=${BSZ} \
         --num_core_per_host=${NUM_CORE} \
-        --iterations=20 \
-        --save_steps=100 \
+        --iterations=200 \
+        --save_steps=4000 \
         ${@:2}
 elif [[ $1 == 'eval' ]]; then
     echo 'Run evaluation...'
