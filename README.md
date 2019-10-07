@@ -45,4 +45,5 @@ $ bash scripts/doupo_base_gpu.sh inference
 ```
 set AUTOGRAPH_VERBOSITY=10
 set TF_XLA_FLAGS=--tf_xla_cpu_global_jit
+set CUDA_VISIBLE_DEVICES=0
 ```
